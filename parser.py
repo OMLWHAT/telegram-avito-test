@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup as bs
-import csv
 
 
 class Bot:
@@ -50,21 +49,11 @@ class Bot:
                 continue
         return user_database
 
-    def save_csv(self, data):
-        with open('data.csv', 'w') as file:
-            wrtr = csv.writer(file)
-            wrtr.writerow(("Имя", "Номер", "Ссылка"))
-            for i in data:
-                wrtr.writerow((i['name'], i['phone'], i['href']))
-
-
 def main():
     bot = Bot()
     html = bot.get_html()
     result = bot.parse_html(html)
     print(result)
-    bot.save_csv(result)
-    print("OK")
 
 
 if __name__ == '__main__':
