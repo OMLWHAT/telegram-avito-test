@@ -24,6 +24,7 @@ class Bot:
         for data in main__div:
             try:
                 a = data.find('a', {'class': '_BTUA'})['href']
+                print(a)
                 links = {
                     'href': f'https://m.avito.ru{a}'
                 }
