@@ -23,8 +23,7 @@ class Bot:
         main__div = soup.find_all('div', {'class': 'ON2y7'})
         for data in main__div:
             try:
-                a = data.find('a', {'class': '_BTUA'})['href']
-                print(a)
+                a = data.find('a', {'class': 'xTVII'})['href']
                 links = {
                     'href': f'https://m.avito.ru{a}'
                 }
