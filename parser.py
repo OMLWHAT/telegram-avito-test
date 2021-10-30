@@ -20,12 +20,13 @@ class Bot:
     def parse_html(self, html):
         urls = []
         soup = bs(html, 'lxml')
-        main__div = soup.find_all('div', {'class': 'ON2y7'})
+        main__div = soup.find_all('a', {'class': 'EfomW'})['itemprop']
         for data in main__div:
             try:
-                a = data.find('a', {'class': 'EfomW'})['itemprop']
+                a = data.find('a', {'class': '_BTUA'})
+                print(data)
                 links = {
-                    'href': f'https://m.avito.ru{a}'
+                    'href': f'https://m.avito.ru{data}'
                 }
                 urls.append(links)
             except:
