@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup as bs
-import csv
 
 
 class Bot:
@@ -20,7 +19,6 @@ class Bot:
 
     def parse_html(self, html):
         urls = []
-        user_database = []
         soup = bs(html, 'lxml')
         main__div = soup.find_all('div', {'class': 'ON2y7'})
         for data in main__div:
@@ -29,6 +27,7 @@ class Bot:
                 links = {
                     'href': f'https://m.avito.ru{a}'
                 }
+                urls.append(links)
             except:
                 continue
         return links
