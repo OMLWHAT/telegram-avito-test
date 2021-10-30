@@ -29,9 +29,9 @@ class Bot:
                 links = {
                     'href': f'https://m.avito.ru{a}'
                 }
-                urls.append(links)
             except:
                 continue
+        return links
 
 
 def main():
