@@ -20,9 +20,10 @@ class Bot:
     def parse_html(self, html):
         urls = []
         soup = bs(html, 'lxml')
-        main__div = soup.find_all('div', {'class': 'xTVII'})
+        main__div = soup.find_all('a', {'class': 'EfomW'})
         for data in main__div:
             try:
+                print(data)
                 a = data.find('a', {'class': 'EfomW'})
                 links = {
                     'href': f'https://m.avito.ru{a}'
