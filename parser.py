@@ -22,40 +22,16 @@ class Bot:
         urls = []
         user_database = []
         soup = bs(html, 'lxml')
-        main__div = soup.find_all('div', {'class': '_328WR'})
+        main__div = soup.find_all('div', {'class': 'ON2y7'})
         for data in main__div:
             try:
-                a = data.find('a', {'class': 'MBUbs'})['href']
+                a = data.find('a', {'class': '_BTUA'})['href']
                 links = {
                     'href': f'https://m.avito.ru{a}'
                 }
                 urls.append(links)
             except:
                 continue
-        for user in urls:
-            r = requests.get(user['href'], headers=self.headers)
-            soup = bs(r.text, 'lxml')
-            try:
-                name = soup.find('span', {'class': 'ZvfUX'}).text
-                phone = soup.find('a', {'class': '_2MOUQ'})['href']
-                href = user['href']
-                phone = phone[4::1]
-                user_data = {
-                    'name': name,
-                    'phone': phone,
-                    'href': href
-                }
-                user_database.append(user_data)
-            except:
-                continue
-        return user_database
-
-    def save_csv(self, data):
-        with open('data.csv', 'w') as file:
-            wrtr = csv.writer(file)
-            wrtr.writerow(("Имя", "Номер", "Ссылка"))
-            for i in data:
-                wrtr.writerow((i['name'], i['phone'], i['href']))
 
 
 def main():
@@ -63,8 +39,6 @@ def main():
     html = bot.get_html()
     result = bot.parse_html(html)
     print(result)
-    bot.save_csv(result)
-    print("OK")
 
 
 if __name__ == '__main__':
