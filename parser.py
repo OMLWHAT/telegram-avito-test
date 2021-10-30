@@ -21,6 +21,7 @@ class Bot:
         urls = []
         soup = bs(html, 'lxml')
         main__div = soup.find_all('a', {'class': 'EfomW'})
+        print(main__div)
         for data in main__div:
             try:
                 print(data)
