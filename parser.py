@@ -36,6 +36,7 @@ class Bot:
 def main():
     bot = Bot()
     html = bot.get_html()
+    print(html)
     result = bot.parse_html(html)
     print(result)
 
