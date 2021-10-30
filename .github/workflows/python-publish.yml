@@ -14,5 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Install the requirements
+      run: python install -r requirements.txt
     - name: Run the parser
       run: python parser.py
