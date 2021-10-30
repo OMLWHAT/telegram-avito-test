@@ -30,7 +30,7 @@ class Bot:
                 urls.append(links)
             except:
                 continue
-        return links
+        return urls
 
 
 def main():
