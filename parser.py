@@ -21,8 +21,10 @@ class Bot:
         urls = []
         soup = bs(html, 'lxml')
         main__div = soup.find_all('div', {'class': 'xTVII'})
+        print(main__div)
         for data in main__div :
             try:
+                print(data)
                 a = data.find('a', {'itemprop': 'url'})['href']
                 print(a)
                 links = {
