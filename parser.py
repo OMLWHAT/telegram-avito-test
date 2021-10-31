@@ -20,7 +20,8 @@ class Bot:
     def parse_html(self, html):
         urls = []
         soup = bs(html, 'lxml')
-        main__div = soup.find_all('div', {'itemprop': 'name'})
+        main__div = soup.find_all('div', {'class': 'ON2y7'})
+        print(main__div)
         for data in main__div:
             try:
                 print(data)
