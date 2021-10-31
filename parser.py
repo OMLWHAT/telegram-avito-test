@@ -20,8 +20,7 @@ class Bot:
     def parse_html(self, html):
         urls = []
         soup = bs(html, 'lxml')
-        main__div = soup.find_all('div', {'data-marker': 'item'})
-        print(main__div)
+        main__div = soup.find_all('div', {'data-marker': 'item/title'})
         for data in main__div:
             try:
                 print(data)
