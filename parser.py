@@ -21,10 +21,11 @@ class Bot:
         urls = []
         soup = bs(html, 'lxml')
         main__div = soup.find_all('div', {'class': 'ON2y7'})
-        print(main__div)
-        for data in main__div:
+        sec__div = main__div.find('div', {'class': '_BTUA'})
+        thi__div = sec__div.find('div', {'class': '_U2a8'})
+        fou__div = thi__div.find('div', {'class': 'xTVII'})
+        for data in fou__div :
             try:
-                print(data)
                 a = data.find('a', {'itemprop': 'url'})['href']
                 print(a)
                 links = {
