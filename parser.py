@@ -20,11 +20,8 @@ class Bot:
     def parse_html(self, html):
         urls = []
         soup = bs(html, 'lxml')
-        main__div = soup.find_all('div', {'class': 'ON2y7'})
-        sec__div = main__div.find('div', {'class': '_BTUA'})
-        thi__div = sec__div.find('div', {'class': '_U2a8'})
-        fou__div = thi__div.find('div', {'class': 'xTVII'})
-        for data in fou__div :
+        main__div = soup.find_all('div', {'class': 'xTVII'})
+        for data in main__div :
             try:
                 a = data.find('a', {'itemprop': 'url'})['href']
                 print(a)
