@@ -31,7 +31,6 @@ class AvitoParser:
 
         container = bs.select("a.pagination-page")
         last_button = container[-1]
-        print(last_button)
         href = last_button.get("href")
         if not href:
             return 1
@@ -49,7 +48,7 @@ class AvitoParser:
         
         for item in container:
             block = self.parse_block(item=item)
-            urls.append(block)
+            print(block)
 
     def parse_all(self):
         limit = self.get_pagination_limit()
