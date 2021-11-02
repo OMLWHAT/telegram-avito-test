@@ -5,6 +5,8 @@ from collections import namedtuple
 import bs4
 import requests
 
+urls = []
+
 
 InnerBlock = namedtuple('Block', 'title,price,currency,date,url')
 
@@ -147,7 +149,8 @@ class AvitoParser:
         container = soup.select('div.item.item_table.clearfix.js-catalog-item-enum.item-with-contact.js-item-extended')
         for item in container:
             block = self.parse_block(item=item)
-            print(block)
+            urls.append(block)
+            print(block[1])
 
     def parse_all(self):
         limit = self.get_pagination_limit()
