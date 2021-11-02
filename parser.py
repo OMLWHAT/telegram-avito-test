@@ -6,7 +6,7 @@ request = requests.get(url)
 bs = BeautifulSoup(request.text, "html.parser")
 
 all_urls = []
-all_links = bs.find_all("a", {"data-marker": "title"})
+all_links = bs.find_all("a", {"itemprop": "url"})
 
 for link in all_links:
     all_urls.append("https://www.avito.ru" + link["href"])
