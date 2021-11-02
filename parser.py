@@ -13,7 +13,7 @@ class AvitoParser:
             "Accept-Language": "ru",
         }
 
-    def get_page(self, page: int = None):
+    def get_page(self, page):
         params = {
             "radius": 0,
             "user": 1,
@@ -40,7 +40,7 @@ class AvitoParser:
         
         return int(params["p"][0])
 
-    def get_blocks(self, page: int = None):
+    def get_blocks(self, page):
         text = self.get_page(page=page)
         bs = BeautifulSoup(text, "lxml")
 
