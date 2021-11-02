@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://www.avito.ru/naberezhnye_chelny/nedvizhimost"
+url = "https://www.avito.ru/tatarstan/bytovaya_elektronika?f=ASgCAgECAUXGmgwVeyJmcm9tIjoxLCJ0byI6MTUwMDB9&q=Видеокарты"
 request = requests.get(url)
 bs = BeautifulSoup(request.text, "html.parser")
 
