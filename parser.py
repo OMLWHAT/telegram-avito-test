@@ -1,3 +1,4 @@
+import time
 import requests
 from bs4 import BeautifulSoup
 
@@ -9,3 +10,4 @@ all_links = bs.find_all("a", {"itemprop": "url"})
 
 for links in all_links:
     print("https://www.avito.ru" + links["href"])
+    time.sleep(1)
