@@ -12,7 +12,7 @@ class Bot:
         self.get_html()
 
     def get_html(self):
-        url = "https://m.avito.ru/rossiya/nedvizhimost"
+        url = "https://m.avito.ru/naberezhnye_chelny/nedvizhimost"
         with requests.Session() as session:
             response = session.get(url, headers=self.headers)
         return response.text
@@ -21,12 +21,9 @@ class Bot:
         urls = []
         soup = bs(html, 'lxml')
         main__div = soup.find_all('div', {'class': 'xTVII'})
-        print(main__div)
         for data in main__div :
             try:
-                print(data)
-                a = data.find('a', {'itemprop': 'url'})['href']
-                print(a)
+                a = data.find('a', {'class': 'EfomW'})['href']
                 links = {
                     'href': f'https://m.avito.ru{a}'
                 }
