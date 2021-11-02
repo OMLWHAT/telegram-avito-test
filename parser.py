@@ -5,6 +5,16 @@ from collections import namedtuple
 import bs4
 import requests
 
+
+InnerBlock = namedtuple('Block', 'title,price,currency,date,url')
+
+
+class Block(InnerBlock):
+
+    def __str__(self):
+        return f'{self.title}\t{self.price} {self.currency}\t{self.date}\t{self.url}'
+
+
 class AvitoParser:
 
     def __init__(self):
@@ -23,10 +33,10 @@ class AvitoParser:
             params['p'] = page
 
         # url = 'https://www.avito.ru/moskva/avtomobili/bmw/5'
-        url = 'https://www.avito.ru/tatarstan/bytovaya_elektronika?f=ASgCAgECAUXGmgwVeyJmcm9tIjoxLCJ0byI6MTUwMDB9&q=Видеокарты'
+        url = 'https://www.avito.ru/tatarstan/bytovaya_elektronika?f=ASgCAgECAUXGmgwVeyJmcm9tIjoxLCJ0byI6MTUwMDB9&p=1&q=Видеокарты'
         r = self.session.get(url, params=params)
         return r.text
-    
+
     @staticmethod
     def parse_date(item: str):
         params = item.strip().split(' ')
@@ -73,7 +83,7 @@ class AvitoParser:
         else:
             print('Не смогли разобрать формат:', item)
             return
-    
+
     def parse_block(self, item):
         # Выбрать блок со ссылкой
         url_block = item.select_one('a.item-description-title-link')
