@@ -6,10 +6,24 @@ from bs4 import BeautifulSoup
 urls = []
 
 class AvitoParser:
-    def get_page(self):
+    def __init__(self):
+        self.session = requests.Session()
+        self.session.headers = {
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.2 Safari/605.1.15",
+            "Accept-Language": "ru",
+        }
+
+    def get_page(self, page: int = None):
+        params = {
+            "radius": 0,
+            "user": 1,
+        }
+        if page and page > 1:
+            params["p"] = page
+
         url = "https://www.avito.ru/tatarstan/bytovaya_elektronika?f=ASgCAgECAUXGmgwVeyJmcm9tIjoxLCJ0byI6MTUwMDB9&q=Видеокарты"
-        request = requests.get(url)
-        return request.text
+        r = self.session.get(url, params=params)
+        return r.text
     
     def get_pagination_limit(self):
         text = self.get_page()
