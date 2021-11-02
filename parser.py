@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 urls = []
 
 class AvitoParser:
-    def get_page():
+    def get_page(self):
         url = "https://www.avito.ru/tatarstan/bytovaya_elektronika?f=ASgCAgECAUXGmgwVeyJmcm9tIjoxLCJ0byI6MTUwMDB9&q=Видеокарты"
         request = requests.get(url)
         bs = BeautifulSoup(request.text, "html.parser")
