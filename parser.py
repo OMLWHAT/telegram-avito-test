@@ -15,7 +15,7 @@ class AvitoParser:
         text = self.get_page()
         bs = BeautifulSoup(text, "lxml")
 
-        container = bs.select("a.pagination-item")
+        container = bs.select("span.pagination-item")
         print(container)
         last_button = container[-1]
         href = last_button.get("href")
