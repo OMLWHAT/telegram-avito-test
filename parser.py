@@ -137,7 +137,7 @@ class AvitoParser:
 
         r = urllib.parse.urlparse(href)
         params = urllib.parse.parse_qs(r.query)
-        return int(params['p'][0])
+        return 1
 
     def get_blocks(self, page: int = None):
         text = self.get_page(page=page)
