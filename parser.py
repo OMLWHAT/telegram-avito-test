@@ -4,20 +4,21 @@ from bs4 import BeautifulSoup
 fake_urls = []
 total_urls = []
 
-class Bot():
+class Bot():   
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.2 Safari/605.1.15',
+        'Accept-Language': 'ru'
+    }
     
-     def __init__(self):
-        self.session = requests.Session()
-        self.session.headers = {
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.2 Safari/605.1.15',
-            'Accept-Language': 'ru',
-        }
+    def __init__(self):
+        self.get_page()
     
     def get_page(self, page):
         url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}"
-        response = self.session.get(url, self.headers=page)
+        with requests.Session() as session:
+            response = session.get(url, headers=self.headers)
         
-        return request.text
+        return response.text
     
     def get_ads(self, pages):
         urls = []
