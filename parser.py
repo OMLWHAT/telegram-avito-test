@@ -41,7 +41,7 @@ class Bot():
     def parse(self):
         pages = self.count_pages()          
         ads = self.get_ads(pages)
-        print(ads)
+        #print(ads)
         #total_urls.append(ads)
         
    
