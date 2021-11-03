@@ -10,7 +10,7 @@ class Bot():
         'Accept-Language': 'ru'
     }
     
-    def __init__(self):
+    def __init__(self, page):
         self.get_page()
     
     def get_page(self, page=None):
@@ -48,14 +48,13 @@ class Bot():
     def parse(self):
         pages = self.count_pages()          
         ads = self.get_ads(pages)
-        fake_urls.append(ads)
-        total_urls.append(fake_urls[1])  
+        total_urls.append(ads)
         
    
 def main():
     parser = Bot()
     parser.parse()
-    print(total_urls)
+    print(total_urls[1])
     
 if __name__ == '__main__':
     main()
