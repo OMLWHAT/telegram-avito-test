@@ -128,7 +128,7 @@ class AvitoParser:
 
     def get_pagination_limit(self):
         text = self.get_page()
-        soup = bs4.BeautifulSoup(text, 'lxml')
+        soup = bs4.BeautifulSoup(text, 'html.parser')
 
         container = soup.select('a.pagination-page')
         last_button = container[-1]
@@ -142,7 +142,7 @@ class AvitoParser:
 
     def get_blocks(self, page: int = None):
         text = self.get_page(page=page)
-        soup = bs4.BeautifulSoup(text, 'lxml')
+        soup = bs4.BeautifulSoup(text, 'html.parser')
 
         # Запрос CSS-селектора, состоящего из множества классов, производится через select
         container = soup.select('div.item.item_table.clearfix.js-catalog-item-enum.item-with-contact.js-item-extended')
