@@ -33,7 +33,7 @@ class AvitoParser:
             params['p'] = page
 
         # url = 'https://www.avito.ru/moskva/avtomobili/bmw/5'
-        url = 'https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zhenskaya_odezhda'
+        url = 'https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ'
         r = self.session.get(url, params=params)
         return r.text
 
