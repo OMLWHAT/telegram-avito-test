@@ -32,6 +32,8 @@ class Bot():
         url = last_button.get('href')
         pages = url.rsplit("=", 1)[-1]
         
+        print(pages)
+        
         return len(pages)
         
     def parse(self):
