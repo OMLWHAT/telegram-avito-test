@@ -21,7 +21,8 @@ class Bot():
         
    
 def main():
-    bot.count_pages()
+    parser = Bot()
+    parser.count_pages()
     
 main()
 
