@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+fake_urls = []
 total_urls = []
 
 class Bot():
@@ -10,16 +11,16 @@ class Bot():
         
         return request.text
     
-    def get_ads(self, page):
-        text = self.get_page(page)
-        bs = BeautifulSoup(text, "html.parser")
-        
+    def get_ads(self, pages):
         urls = []
-        ads = bs.find_all("a", {"itemprop": "url"})
-        
-        for ad in ads:
-            urls.append("https://www.avito.ru" + ad["href"])
+        for page in range(1, pages + 1):
+            text = self.get_page(page)
+            bs = BeautifulSoup(text, "html.parser")
             
+            ads = bs.find_all("a", {"itemprop": "url"})
+            for ad in ads:
+                urls.append("https://www.avito.ru" + ad["href"])
+                
         return urls
         
         
@@ -35,12 +36,10 @@ class Bot():
         return len(pages)
         
     def parse(self):
-        pages = self.count_pages()
-        
-        for page in range(1, pages + 1):
-            ads = self.get_ads(page)
-            total_urls.append(ads)
-            
+        pages = self.count_pages()          
+        ads = self.get_ads(pages)
+        fake_urls.append(ads)
+        total_urls.append(fake_urls[1])  
         
    
 def main():
