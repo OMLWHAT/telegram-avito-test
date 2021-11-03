@@ -1,5 +1,6 @@
 import time
 import requests
+import lmxl
 from bs4 import BeautifulSoup
 
 fake_urls = []
@@ -29,7 +30,7 @@ class Bot():
         
     def count_pages(self):
         text = self.get_page(1)
-        bs = BeautifulSoup(text, "html.parser")
+        bs = BeautifulSoup(text, "lmxl")
         
         container = bs.select('a.pagination-page')
         last_button = container[-1]
