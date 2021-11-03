@@ -10,8 +10,8 @@ class Bot():
         
         return request.text
     
-    def get_ads(self, pages):
-        text = self.get_page(pages)
+    def get_ads(self, page):
+        text = self.get_page(page)
         bs = BeautifulSoup(text, "html.parser")
         
         urls = []
@@ -45,7 +45,7 @@ class Bot():
    
 def main():
     parser = Bot()
-    parser.count_pages()
+    parser.parse()
     
 if __name__ == '__main__':
     main()
