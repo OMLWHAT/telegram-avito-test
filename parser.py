@@ -5,18 +5,17 @@ fake_urls = []
 total_urls = []
 
 class Bot():
-    headers = {
-        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'
-    }
     
-    def __init__(self):
-        self.get_page()
+     def __init__(self):
+        self.session = requests.Session()
+        self.session.headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.2 Safari/605.1.15',
+            'Accept-Language': 'ru',
+        }
     
     def get_page(self, page):
         url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}"
-        with requests.Session() as session:
-            response = session.get(url, headers=self.headers)
+        response = self.session.get(url, page)
         
         return request.text
     
