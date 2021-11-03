@@ -11,7 +11,7 @@ class Bot():
     }
     
     def __init__(self):
-        self.get_html()
+        self.get_page()
     
     def get_page(self, page):
         url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}"
