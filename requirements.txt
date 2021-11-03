@@ -1,4 +1,4 @@
 beautifulsoup4 == 4.7.1
 lxml == 4.4.1
 requests == 2.21.0
-discord-webhook==latest
+discord-webhook==0.14.0
