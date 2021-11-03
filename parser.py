@@ -8,7 +8,7 @@ class Bot():
         return request.text
     def count_pages(self):
         text = self.get_page(1)
-        bs = BeautifulSoup(text, "lmxl")
+        bs = BeautifulSoup(text, "html.parser")
         
         container = bs.select('a.pagination-page')
         last_button = container[-1]
