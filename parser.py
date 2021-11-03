@@ -22,7 +22,7 @@ class Bot():
             ads = bs.find_all("a", {"itemprop": "url"})
             for ad in ads:
                 urls.append("https://www.avito.ru" + ad["href"])
-        print(urls[1])
+        print(urls)
         
         return urls
         
