@@ -10,7 +10,7 @@ class Bot():
         'Accept-Language': 'ru'
     }
     
-    def __init__(self, page):
+    def __init__(self):
         self.get_page()
     
     def get_page(self, page=None):
