@@ -15,9 +15,8 @@ class Bot():
     def get_ads(self, pages):
         urls = []
         for page in range(1, pages + 1):
-            time.sleep(30)
             text = self.get_page(page)
-            bs = BeautifulSoup(text, "lmxl")
+            bs = BeautifulSoup(text, "html.parser")
             
             ads = bs.find_all("a", {"itemprop": "url"})
             for ad in ads:
@@ -29,14 +28,14 @@ class Bot():
         
     def count_pages(self):
         text = self.get_page(1)
-        bs = BeautifulSoup(text, "lmxl")
+        bs = BeautifulSoup(text, "html.parser")
         
         container = bs.select('a.pagination-page')
         last_button = container[-1]
         url = last_button.get('href')
         pages = url.rsplit("=", 1)[-1]
         
-        return len(pages)
+        return pages
         
     def parse(self):
         pages = self.count_pages()          
