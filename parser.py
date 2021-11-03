@@ -8,6 +8,7 @@ class Bot():
         return request.text
     def count_pages(self):
         text = self.get_page(1)
+        print(text)
         bs = BeautifulSoup(text, "html.parser")
         
         container = bs.select('a.pagination-page')
