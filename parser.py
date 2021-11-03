@@ -21,9 +21,9 @@ class Bot():
             
             ads = bs.find_all("a", {"itemprop": "url"})
             for ad in ads:
-                print(ad["href"])
                 urls.append("https://www.avito.ru" + ad["href"])
-                
+        print(urls[1])
+        
         return urls
         
         
