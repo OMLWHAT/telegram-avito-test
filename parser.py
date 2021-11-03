@@ -32,14 +32,14 @@ class Bot():
         url = last_button.get('href')
         pages = url.rsplit("=", 1)[-1]
         
-        return pages
+        return len(pages)
         
     def parse(self):
         pages = self.count_pages()
         
-        for block in range(1, pages + 1):
-            blocks = self.get_ads(block)
-            total_urls.append(blocks)
+        for page in range(1, pages + 1):
+            ads = self.get_ads(page)
+            total_urls.append(ads)
             
         
    
