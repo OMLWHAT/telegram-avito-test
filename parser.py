@@ -1,6 +1,5 @@
 import time
 import requests
-import lmxl
 from bs4 import BeautifulSoup
 
 fake_urls = []
