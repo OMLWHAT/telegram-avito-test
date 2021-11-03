@@ -25,11 +25,13 @@ class Bot():
         
     def count_pages(self):
         text = self.get_page(1)
+        print(text)
         bs = BeautifulSoup(text, "html.parser")
         
         container = bs.select('a.pagination-page')
         last_button = container[-1]
         url = last_button.get('href')
+        print(url)
         pages = url.rsplit("=", 1)[-1]
         
         print(pages)
