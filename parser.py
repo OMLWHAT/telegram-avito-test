@@ -30,7 +30,7 @@ class Bot():
         container = bs.select('a.pagination-page')
         last_button = container[-1]
         url = last_button.get('href')
-        pages = href.rsplit("=", 1)[-1]
+        pages = url.rsplit("=", 1)[-1]
         
         return pages
         
