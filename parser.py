@@ -17,7 +17,7 @@ class Bot():
         for page in range(1, pages + 1):
             time.sleep(30)
             text = self.get_page(page)
-            bs = BeautifulSoup(text, "html.parser")
+            bs = BeautifulSoup(text, "lmxl")
             
             ads = bs.find_all("a", {"itemprop": "url"})
             for ad in ads:
