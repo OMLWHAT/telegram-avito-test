@@ -46,7 +46,7 @@ class Bot():
 def main():
     parser = Bot()
     parser.parse()
-    print(total_urls[1])
+    print(total_urls)
     
 if __name__ == '__main__':
     main()
