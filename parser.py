@@ -24,7 +24,7 @@ class Bot():
         urls = []
         for page in range(1, pages + 1):
             print(page)
-            text = self.get_page(page=page)
+            text = self.get_page(page)
             bs = BeautifulSoup(text, "html.parser")
             
             ads = bs.find_all("a", {"itemprop": "url"})
