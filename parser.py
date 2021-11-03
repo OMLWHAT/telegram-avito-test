@@ -11,9 +11,9 @@ class Bot():
     }
     
     def __init__(self):
-        self.get_page(page)
+        self.get_page()
     
-    def get_page(self, page):
+    def get_page(self, page: None):
         url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}"
         with requests.Session() as session:
             response = session.get(url, headers=self.headers)
