@@ -2,6 +2,7 @@ import datetime
 import urllib.parse
 from collections import namedtuple
 
+from discord_webhook import DiscordWebhook
 import bs4
 import requests
 
@@ -147,7 +148,8 @@ class AvitoParser:
         container = soup.select('div.item.item_table.clearfix.js-catalog-item-enum.item-with-contact.js-item-extended')
         for item in container:
             block = self.parse_block(item=item)
-            print(block)
+            webhook = DiscordWebhook(url='https://discord.com/api/webhooks/905356606039023617/LCbUyMSedkxWufyal_qmJ6LpEEBash2mPh62E55IByp1mtjW6bGf0L-kEdO3DRzPUaSy', content=block)
+            response = webhook.execute()
 
     def parse_all(self):
         limit = self.get_pagination_limit()
