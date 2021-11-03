@@ -15,9 +15,9 @@ class Bot():
     def get_ads(self, pages):
         urls = []
         for page in range(1, pages + 1):
-            time.sleep(5)
-            print(page)
+            time.sleep(10)
             text = self.get_page(page)
+            #print(text)
             bs = BeautifulSoup(text, "html.parser")
             
             ads = bs.find_all("a", {"itemprop": "url"})
@@ -41,13 +41,13 @@ class Bot():
     def parse(self):
         pages = self.count_pages()          
         ads = self.get_ads(pages)
-        total_urls.append(ads)
+        print(ads)
+        #total_urls.append(ads)
         
    
 def main():
     parser = Bot()
     parser.parse()
-    print(total_urls[1])
     
 if __name__ == '__main__':
     main()
