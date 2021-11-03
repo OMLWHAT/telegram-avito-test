@@ -5,9 +5,18 @@ fake_urls = []
 total_urls = []
 
 class Bot():
+    headers = {
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'
+    }
+    
+    def __init__(self):
+        self.get_html()
+    
     def get_page(self, page):
         url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}"
-        request = requests.get(url)
+        with requests.Session() as session:
+            response = session.get(url, headers=self.headers)
         
         return request.text
     
