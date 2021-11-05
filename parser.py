@@ -2,9 +2,6 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
-fake_urls = []
-total_urls = []
-
 class Bot():   
     def get_page(self, page):
         url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}"
@@ -21,7 +18,6 @@ class Bot():
             ads = bs.find_all("a", {"itemprop": "url"})
             for ad in ads:
                 urls.append("https://www.avito.ru" + ad["href"])
-        print(urls)
         
         return urls
         
@@ -40,13 +36,15 @@ class Bot():
     def parse(self):
         pages = self.count_pages()          
         ads = self.get_ads(pages)
-        #print(ads)
-        #total_urls.append(ads)
+        total_urls = list(set(ads))
+        
+        return total_urls
         
    
 def main():
     parser = Bot()
-    parser.parse()
+    urls = parser.parse()
+    print(urls)
     
 if __name__ == '__main__':
     main()
