@@ -16,12 +16,12 @@ class Bot():
         urls = []
         for page in range(1, pages + 1):
             text = self.get_page(page)
-            print(text)
             bs = BeautifulSoup(text, "html.parser")
             
             ads = bs.find_all("a", {"itemprop": "url"})
             for ad in ads:
                 urls.append("https://www.avito.ru" + ad["href"])
+        print(urls)
         
         return urls
         
