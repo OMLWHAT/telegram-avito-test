@@ -17,14 +17,15 @@ class Bot():
             text = self.get_page(page)
             bs = BeautifulSoup(text, "html.parser")
                                
-            ads = bs.find_all("a", {"itemprop": "url"})
+            #ads = bs.find_all("a", {"itemprop": "url"})
             ads = bs.find_all("div", {"class": "iva-item-body-R_Q9c"})
+            print(ads)
             
-            for ad in ads:
-                dates = bs.find_all("div", {"data-marker": "item-date"})
-                for date in dates:
-                    if date.text.split(" ")[1] == "часов": #or date.text.split(" ")[1] == "часов":
-                        urls.append("https://www.avito.ru" + ad["href"])
+            #for ad in ads:
+                #dates = bs.find_all("div", {"data-marker": "item-date"})
+                #for date in dates:
+                    #if date.text.split(" ")[1] == "часов": #or date.text.split(" ")[1] == "часов":
+                        #urls.append("https://www.avito.ru" + ad["href"])
                         
             return True
         
