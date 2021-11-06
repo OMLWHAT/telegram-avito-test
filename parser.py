@@ -27,6 +27,7 @@ class Bot():
                     dates = ads.find("div", {"data-marker": "item-date"})
                     if dates.text.split(" ")[1] == "часов":
                         urls.append("https://www.avito.ru" + ad["href"])
+                        print(urls)
                     
             
             #for ad in ads:
