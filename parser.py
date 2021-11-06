@@ -17,16 +17,14 @@ class Bot():
             text = self.get_page(page)
             bs = BeautifulSoup(text, "html.parser")
             
-            #ads = bs.find_all("a", {"itemprop": "url"})
             dates = bs.find_all("div", {"data-marker": "item-date"})
             for date in dates:
-                print(date.text)
-                if date.text.split(" ")[1] == "час":
-                    print("yes")
-            #for ad in ads:
-                #urls.append("https://www.avito.ru" + ad["href"])
-        
-        return True
+                if date.text.split(" ")[1] == "час" or data.text.split(" ")[1] == "часов":
+                    ads = bs.find_all("a", {"itemprop": "url"})
+                    for ad in ads:
+                        urls.append("https://www.avito.ru" + ad["href"])
+                        
+            return True
         
         
     def count_pages(self):
@@ -43,17 +41,17 @@ class Bot():
     def parse(self):
         pages = self.count_pages()          
         ads = self.get_ads(pages)
-        #total_urls = []
-        #if ads == True:
-            #total_urls = [el for el, _ in groupby(urls)]
+        total_urls = []
+        if ads == True:
+            total_urls = [el for el, _ in groupby(urls)]
         
-        #return total_urls
+        return total_urls
         
    
 def main():
     parser = Bot()
     total_urls = parser.parse()
-    #print(total_urls)
+    print(total_urls)
     
 if __name__ == "__main__":
     main()
