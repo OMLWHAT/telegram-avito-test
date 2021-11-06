@@ -19,6 +19,7 @@ class Bot():
     
     def get_ads(self, pages):
         for page in range(1, pages + 1):
+            print(page)
             text = self.get_page(page)
             bs = BeautifulSoup(text, "html.parser")
                                
@@ -33,7 +34,7 @@ class Bot():
                 
                 print(ad_page)
                 
-                if ad_page.text.split(" ")[0] == "Сегодня":
+                if ad_page.split(" ")[0] == "Сегодня":
                     urls.append(url)
                         
             return True
@@ -48,7 +49,7 @@ class Bot():
         url = last_button.get("href")
         pages = url.rsplit("=", 1)[-1]
         
-        print(f"Всего: {pages} страниц")
+        print(f"Всего {pages} страниц")
         
         return int(pages)
         
