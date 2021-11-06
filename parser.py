@@ -1,6 +1,7 @@
 import time
 import requests
 from bs4 import BeautifulSoup
+from itertools import groupby
 
 urls = []
 
@@ -39,7 +40,7 @@ class Bot():
         ads = self.get_ads(pages)
         total_urls = []
         if ads == True:
-            total_urls = list(set(urls))
+            total_urls = [el for el, _ in groupby(urls)]
         
         return total_urls
         
