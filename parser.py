@@ -16,12 +16,13 @@ class Bot():
         for page in range(1, pages + 1):
             text = self.get_page(page)
             bs = BeautifulSoup(text, "html.parser")
+                               
+            ads = bs.find_all("a", {"itemprop": "url"})
             
-            dates = bs.find_all("div", {"data-marker": "item-date"})
-            for date in dates:
-                if date.text.split(" ")[1] == "час" or date.text.split(" ")[1] == "часов":
-                    ads = bs.find_all("a", {"itemprop": "url"})
-                    for ad in ads:
+            for ad in ads:
+                dates = bs.find_all("div", {"data-marker": "item-date"})
+                for date in dates:
+                    if date.text.split(" ")[1] == "час" or date.text.split(" ")[1] == "часов":
                         urls.append("https://www.avito.ru" + ad["href"])
                         
             return True
@@ -31,8 +32,8 @@ class Bot():
         text = self.get_page(1)
         bs = BeautifulSoup(text, "html.parser")
         
-        container = bs.select("a.pagination-page")
-        last_button = container[-1]
+        buttons = bs.select("a.pagination-page")
+        last_button = buttons[-1]
         url = last_button.get("href")
         pages = url.rsplit("=", 1)[-1]
         
