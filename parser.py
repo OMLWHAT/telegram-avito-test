@@ -34,7 +34,7 @@ class Bot():
                 
                 print(ad_page)
                 
-                if ad_page.split(" ")[0] == "Сегодня":
+                if ad_page.string.split(" ")[0] == "Сегодня":
                     urls.append(url)
                         
             return True
