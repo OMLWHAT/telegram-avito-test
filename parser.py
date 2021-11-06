@@ -2,6 +2,8 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
+urls = []
+
 class Bot():   
     def get_page(self, page):
         url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}"
@@ -10,7 +12,6 @@ class Bot():
         return request.text
     
     def get_ads(self, pages):
-        urls = []
         for page in range(1, pages + 1):
             text = self.get_page(page)
             bs = BeautifulSoup(text, "html.parser")
@@ -19,7 +20,7 @@ class Bot():
             for ad in ads:
                 urls.append("https://www.avito.ru" + ad["href"])
         
-        return urls
+        return true
         
         
     def count_pages(self):
@@ -36,7 +37,8 @@ class Bot():
     def parse(self):
         pages = self.count_pages()          
         ads = self.get_ads(pages)
-        total_urls = list(set(ads))
+        if ads == true:
+            total_urls = list(set(urls))
         
         return total_urls
         
