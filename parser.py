@@ -31,6 +31,8 @@ class Bot():
                 
                 ad_page = ad_bs.find("div", {"class": "title-info-metadata-item-redesign"})
                 
+                print(ad_page)
+                
                 if ad_page.text.split(" ")[0] == "Сегодня":
                     urls.append(url)
                         
