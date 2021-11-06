@@ -31,8 +31,10 @@ class Bot():
                     elif dates.text.split(" ")[1] == "минуту":
                         urls.append("https://www.avito.ru" + ad["href"])
                     elif dates.text.split(" ")[1] == "минут":
-                        urls.append("https://www.avito.ru" + ad["href"])    
+                        urls.append("https://www.avito.ru" + ad["href"])
                     elif dates.text.split(" ")[1] == "час":
+                        urls.append("https://www.avito.ru" + ad["href"])
+                    elif dates.text.split(" ")[1] == "часа":
                         urls.append("https://www.avito.ru" + ad["href"])    
                     elif dates.text.split(" ")[1] == "часов":
                         urls.append("https://www.avito.ru" + ad["href"])
