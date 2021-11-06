@@ -26,9 +26,9 @@ class Bot():
         text = self.get_page(1)
         bs = BeautifulSoup(text, "html.parser")
         
-        container = bs.select('a.pagination-page')
+        container = bs.select("a.pagination-page")
         last_button = container[-1]
-        url = last_button.get('href')
+        url = last_button.get("href")
         pages = url.rsplit("=", 1)[-1]
         
         return int(pages)
@@ -46,5 +46,5 @@ def main():
     urls = parser.parse()
     print(urls)
     
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
