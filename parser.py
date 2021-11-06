@@ -8,9 +8,9 @@ avito_url = "https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyusc
 urls = []
 
 class Bot():
-    def get_page(self, url, page: None):
+    def get_page(self, url, page):
         url = ""
-        if page == None:
+        if page == 0:
             url = f"{url}"
         else:
             url = f"{url}{page}"
@@ -27,7 +27,7 @@ class Bot():
            
             for ad in ads:
                 url = "https://www.avito.ru" + ad["href"]
-                ad_text = self.get_page(url)
+                ad_text = self.get_page(url, 0)
                 ad_bs = BeautifulSoup(ad_text, "html.parser")
                 
                 ad_page = ad_bs.find("div", {"class": "title-info-metadata-item-redesign"})
