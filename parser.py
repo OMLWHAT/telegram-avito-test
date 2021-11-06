@@ -20,7 +20,7 @@ class Bot():
             for ad in ads:
                 urls.append("https://www.avito.ru" + ad["href"])
         
-        return true
+        return True
         
         
     def count_pages(self):
@@ -37,7 +37,7 @@ class Bot():
     def parse(self):
         pages = self.count_pages()          
         ads = self.get_ads(pages)
-        if ads == true:
+        if ads == True:
             total_urls = list(set(urls))
         
         return total_urls
