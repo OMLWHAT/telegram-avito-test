@@ -20,7 +20,7 @@ class Bot():
             #ads = bs.find_all("a", {"itemprop": "url"})
             ads_body = bs.find_all("div", {"class": "iva-item-body-R_Q9c"})
             for ads in ads_body:
-                ads_title = ads.find("a", {"itemprop": "url"})
+                ads_title = ads.find("div", {"class": "iva-item-titleStep-_CxvN"})
                 for ad in ads_title:
                     print(ad)
                     dates = ads.find("div", {"data-marker": "item-date"})
