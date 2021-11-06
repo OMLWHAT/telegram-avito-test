@@ -40,8 +40,6 @@ class Bot():
         total_urls = []
         if ads == True:
             total_urls = list(set(urls))
-        else:
-            return
         
         return total_urls
         
