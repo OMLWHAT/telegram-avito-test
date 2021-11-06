@@ -18,6 +18,7 @@ class Bot():
             bs = BeautifulSoup(text, "html.parser")
                                
             ads = bs.find_all("a", {"itemprop": "url"})
+            ads = bs.find_all("div", {"class": "iva-item-body-R_Q9c"})
             
             for ad in ads:
                 dates = bs.find_all("div", {"data-marker": "item-date"})
