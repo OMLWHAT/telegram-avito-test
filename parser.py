@@ -3,53 +3,43 @@ import requests
 from itertools import groupby
 from bs4 import BeautifulSoup
 
+avito_url = "https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p="
+
 urls = []
 
-class Bot():   
-    def get_page(self, page):
-        url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}"
+class Bot():
+    def get_page(self, url, page: None):
+        url = ""
+        if page == None:
+            url = f"{url}"
+        else:
+            url = f"{url}{page}"
         request = requests.get(url)
         
         return request.text
     
     def get_ads(self, pages):
         for page in range(1, pages + 1):
-            text = self.get_page(page)
+            text = self.get_page(avito_url, page)
             bs = BeautifulSoup(text, "html.parser")
                                
-            #ads = bs.find_all("a", {"itemprop": "url"})
-            ads_dates = bs.find_all("div", {"data-marker": "item-date"})
-            #ads_body = bs.find_all("div", {"class": "iva-item-body-R_Q9c"})
-            for dates in ads_dates:
-                ads = dates.Parent
-                print(ads)
-                    #if dates.text.split(" ")[1] == "секунду":
-                         
-                    #elif dates.text.split(" ")[1] == "секунд":
-                        #urls.append("https://www.avito.ru" + ad["href"])
-                    #elif dates.text.split(" ")[1] == "минуту":
-                        #urls.append("https://www.avito.ru" + ad["href"])
-                    #elif dates.text.split(" ")[1] == "минут":
-                        #urls.append("https://www.avito.ru" + ad["href"])
-                    #elif dates.text.split(" ")[1] == "час":
-                        #urls.append("https://www.avito.ru" + ad["href"])
-                    #elif dates.text.split(" ")[1] == "часа":
-                        #urls.append("https://www.avito.ru" + ad["href"])    
-                    #elif dates.text.split(" ")[1] == "часов":
-                        #urls.append("https://www.avito.ru" + ad["href"])
-                    
-                    
-            #for ad in ads:
-                #dates = bs.find_all("div", {"data-marker": "item-date"})
-                #for date in dates:
-                    #if date.text.split(" ")[1] == "часов": #or date.text.split(" ")[1] == "часов":
-                        #urls.append("https://www.avito.ru" + ad["href"])
+            ads = bs.find_all("a", {"itemprop": "url"})
+           
+            for ad in ads:
+                url = "https://www.avito.ru" + ad["href"]
+                ad_text = self.get_page(url)
+                ad_bs = BeautifulSoup(ad_text, "html.parser")
+                
+                ad_page = ad_bs.find("div", {"class": "title-info-metadata-item-redesign"})
+                
+                if ad_page.text.split(" ")[0] == "Сегодня":
+                    urls.append(url)
                         
             return True
         
         
     def count_pages(self):
-        text = self.get_page(1)
+        text = self.get_page(avito_url, 1)
         bs = BeautifulSoup(text, "html.parser")
         
         buttons = bs.select("a.pagination-page")
