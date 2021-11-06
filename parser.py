@@ -19,7 +19,7 @@ class Bot():
     
     def get_ads(self, pages):
         for page in range(1, pages + 1):
-            text = self.get_page(avito_url, page)
+            text = self.get_page(page)
             bs = BeautifulSoup(text, "html.parser")
                                
             ads = bs.find_all("a", {"itemprop": "url"})
