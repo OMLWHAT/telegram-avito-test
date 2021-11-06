@@ -23,6 +23,7 @@ class Bot():
                 ads_title = ads.find("div", {"class": "iva-item-titleStep-_CxvN"})
                 for ad in ads_title:
                     dates = ads.find("div", {"data-marker": "item-date"})
+                    print(dates.text.split(" ")[1])
                     if dates.text.split(" ")[1] == "секунду":
                         urls.append("https://www.avito.ru" + ad["href"])
                     elif dates.text.split(" ")[1] == "секунд":
