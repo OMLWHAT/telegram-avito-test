@@ -38,7 +38,7 @@ class Bot():
         
         
     def count_pages(self):
-        text = self.get_page(avito_url)
+        text = self.get_page(1)
         bs = BeautifulSoup(text, "html.parser")
         
         buttons = bs.select("a.pagination-page")
