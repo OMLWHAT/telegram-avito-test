@@ -21,7 +21,7 @@ class Bot():
             ads_dates = bs.find_all("div", {"data-marker": "item-date"})
             #ads_body = bs.find_all("div", {"class": "iva-item-body-R_Q9c"})
             for dates in ads_dates:
-                ads = dates.Parent.Parent.Parent.Parent.Parent
+                ads = dates.Parent
                 print(ads)
                     #if dates.text.split(" ")[1] == "секунду":
                          
