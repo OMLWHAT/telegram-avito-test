@@ -18,11 +18,13 @@ class Bot():
             bs = BeautifulSoup(text, "html.parser")
                                
             #ads = bs.find_all("a", {"itemprop": "url"})
-            ads = bs.find_all("div", {"class": "iva-item-body-R_Q9c"})
-            for ad in ads:
-                dates = ad.find("div", {"data-marker": "item-date"})
-                if dates.text.split(" ")[1] == "часов":
-                    urls.append("https://www.avito.ru" + ad["href"])
+            ads_body = bs.find_all("div", {"class": "iva-item-body-R_Q9c"})
+            for ads in ads_body:
+                ads_title = ads.find("a", {"itemprop": "url"})
+                for ad in ads_title:
+                    dates = ads.find("div", {"data-marker": "item-date"})
+                    if dates.text.split(" ")[1] == "часов":
+                        urls.append("https://www.avito.ru" + ad["href"])
                     
             
             #for ad in ads:
