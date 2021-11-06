@@ -43,17 +43,17 @@ class Bot():
     def parse(self):
         pages = self.count_pages()          
         ads = self.get_ads(pages)
-        total_urls = []
-        if ads == True:
-            total_urls = [el for el, _ in groupby(urls)]
+        #total_urls = []
+        #if ads == True:
+            #total_urls = [el for el, _ in groupby(urls)]
         
-        return total_urls
+        #return total_urls
         
    
 def main():
     parser = Bot()
     total_urls = parser.parse()
-    print(total_urls)
+    #print(total_urls)
     
 if __name__ == "__main__":
     main()
