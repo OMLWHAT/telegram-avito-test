@@ -41,7 +41,7 @@ class Bot():
         if ads == True:
             total_urls = list(set(urls))
         else:
-            return False
+            return
         
         return total_urls
         
@@ -49,10 +49,7 @@ class Bot():
 def main():
     parser = Bot()
     total_urls = parser.parse()
-    if total_urls == False:
-        print("Error")
-    else:
-        print(total_urls)
+    print(total_urls)
     
 if __name__ == "__main__":
     main()
