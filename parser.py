@@ -8,9 +8,9 @@ avito_url = "https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyusc
 urls = []
 
 class Bot():
-    def get_page(self, url, page):
+    def get_page(self, url, page: None):
         url = ""
-        if page == 0:
+        if page == None:
             url = f"{url}"
         else:
             url = f"{url}{page}"
@@ -27,7 +27,7 @@ class Bot():
            
             for ad in ads:
                 url = "https://www.avito.ru" + ad["href"]
-                ad_text = self.get_page(url, 0)
+                ad_text = self.get_page(url, page=page)
                 ad_bs = BeautifulSoup(ad_text, "html.parser")
                 
                 ad_page = ad_bs.find("div", {"class": "title-info-metadata-item-redesign"})
@@ -39,7 +39,7 @@ class Bot():
         
         
     def count_pages(self):
-        text = self.get_page(avito_url, 1)
+        text = self.get_page(avito_url, page=1)
         bs = BeautifulSoup(text, "html.parser")
         
         buttons = bs.select("a.pagination-page")
