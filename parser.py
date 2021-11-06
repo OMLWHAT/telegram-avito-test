@@ -15,7 +15,6 @@ class Bot():
     def get_ads(self, pages):
         for page in range(1, pages + 1):
             text = self.get_page(page)
-            print(text)
             bs = BeautifulSoup(text, "html.parser")
             
             dates = bs.find_all("div", {"data-marker": "item-date"})
