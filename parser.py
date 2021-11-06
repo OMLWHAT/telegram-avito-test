@@ -37,10 +37,9 @@ class Bot():
     def parse(self):
         pages = self.count_pages()          
         ads = self.get_ads(pages)
-        #total_urls = []
+        total_urls = []
         if ads == True:
-            print(urls)
-            #total_urls = list(set(urls))
+            total_urls = list(set(urls))
         
         return total_urls
         
