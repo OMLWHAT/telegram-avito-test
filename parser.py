@@ -1,7 +1,7 @@
 import time
 import requests
-from bs4 import BeautifulSoup
 from itertools import groupby
+from bs4 import BeautifulSoup
 
 urls = []
 
@@ -17,9 +17,14 @@ class Bot():
             text = self.get_page(page)
             bs = BeautifulSoup(text, "html.parser")
             
-            ads = bs.find_all("a", {"itemprop": "url"})
-            for ad in ads:
-                urls.append("https://www.avito.ru" + ad["href"])
+            #ads = bs.find_all("a", {"itemprop": "url"})
+            dates = bs.find_all("div", {"data-marker": "item-date"})
+            for date in dates:
+                print(date.text)
+                if date.text.rsplit(" ", 1)[1] == "час":
+                    print("yes")
+            #for ad in ads:
+                #urls.append("https://www.avito.ru" + ad["href"])
         
         return True
         
