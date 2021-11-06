@@ -23,12 +23,19 @@ class Bot():
                 ads_title = ads.find("div", {"class": "iva-item-titleStep-_CxvN"})
                 for ad in ads_title:
                     dates = ads.find("div", {"data-marker": "item-date"})
-                    print(dates.text)
-                    #if dates.text.split(" ")[1] == "секунду" or dates.text.split(" ")[1] == "секунд" or dates.text.split(" ")[1] == "минуту" or dates.text.split(" ")[1] == "минуты" or dates.text.split(" ")[1] == "час" or dates.text.split(" ")[1] == "часов":
-                        #urls.append("https://www.avito.ru" + ad["href"])
-                        #print(urls)
+                    if dates.text.split(" ")[1] == "секунду":
+                        urls.append("https://www.avito.ru" + ad["href"])
+                    elif dates.text.split(" ")[1] == "секунд":
+                        urls.append("https://www.avito.ru" + ad["href"])
+                    elif dates.text.split(" ")[1] == "минуту":
+                        urls.append("https://www.avito.ru" + ad["href"])
+                    elif dates.text.split(" ")[1] == "минут":
+                        urls.append("https://www.avito.ru" + ad["href"])    
+                    elif dates.text.split(" ")[1] == "час":
+                        urls.append("https://www.avito.ru" + ad["href"])    
+                    elif dates.text.split(" ")[1] == "часов":
+                        urls.append("https://www.avito.ru" + ad["href"])
                     
-            
             #for ad in ads:
                 #dates = bs.find_all("div", {"data-marker": "item-date"})
                 #for date in dates:
@@ -52,17 +59,17 @@ class Bot():
     def parse(self):
         pages = self.count_pages()          
         ads = self.get_ads(pages)
-        #total_urls = []
-        #if ads == True:
-            #total_urls = [el for el, _ in groupby(urls)]
+        total_urls = []
+        if ads == True:
+            total_urls = [el for el, _ in groupby(urls)]
         
-        #return total_urls
+        return total_urls
         
    
 def main():
     parser = Bot()
     total_urls = parser.parse()
-    #print(total_urls)
+    print(total_urls)
     
 if __name__ == "__main__":
     main()
