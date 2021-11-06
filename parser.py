@@ -20,7 +20,7 @@ class Bot():
             
             dates = bs.find_all("div", {"data-marker": "item-date"})
             for date in dates:
-                if date.text.split(" ")[1] == "час" or data.text.split(" ")[1] == "часов":
+                if date.text.split(" ")[1] == "час" or date.text.split(" ")[1] == "часов":
                     ads = bs.find_all("a", {"itemprop": "url"})
                     for ad in ads:
                         urls.append("https://www.avito.ru" + ad["href"])
