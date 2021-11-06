@@ -23,9 +23,10 @@ class Bot():
                 ads_title = ads.find("div", {"class": "iva-item-titleStep-_CxvN"})
                 for ad in ads_title:
                     dates = ads.find("div", {"data-marker": "item-date"})
-                    if dates.text.split(" ")[1] == "секунду" or dates.text.split(" ")[1] == "секунд" or dates.text.split(" ")[1] == "минуту" or dates.text.split(" ")[1] == "минуты" or dates.text.split(" ")[1] == "час" or dates.text.split(" ")[1] == "часов":
-                        urls.append("https://www.avito.ru" + ad["href"])
-                        print(urls)
+                    print(dates.text)
+                    #if dates.text.split(" ")[1] == "секунду" or dates.text.split(" ")[1] == "секунд" or dates.text.split(" ")[1] == "минуту" or dates.text.split(" ")[1] == "минуты" or dates.text.split(" ")[1] == "час" or dates.text.split(" ")[1] == "часов":
+                        #urls.append("https://www.avito.ru" + ad["href"])
+                        #print(urls)
                     
             
             #for ad in ads:
