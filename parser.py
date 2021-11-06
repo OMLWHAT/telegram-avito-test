@@ -37,8 +37,11 @@ class Bot():
     def parse(self):
         pages = self.count_pages()          
         ads = self.get_ads(pages)
+        total_urls = []
         if ads == True:
             total_urls = list(set(urls))
+        else:
+            print("Error")
         
         return total_urls
         
