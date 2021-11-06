@@ -18,26 +18,26 @@ class Bot():
             bs = BeautifulSoup(text, "html.parser")
                                
             #ads = bs.find_all("a", {"itemprop": "url"})
-            ads_body = bs.find_all("div", {"class": "iva-item-body-R_Q9c"})
-            for ads in ads_body:
-                ads_title = ads.find("div", {"class": "iva-item-titleStep-_CxvN"})
-                for ad in ads_title:
-                    dates = ads.find("div", {"data-marker": "item-date"})
-                    print(dates.text.split(" ")[1])
-                    if dates.text.split(" ")[1] == "секунду":
-                        urls.append("https://www.avito.ru" + ad["href"])
-                    elif dates.text.split(" ")[1] == "секунд":
-                        urls.append("https://www.avito.ru" + ad["href"])
-                    elif dates.text.split(" ")[1] == "минуту":
-                        urls.append("https://www.avito.ru" + ad["href"])
-                    elif dates.text.split(" ")[1] == "минут":
-                        urls.append("https://www.avito.ru" + ad["href"])
-                    elif dates.text.split(" ")[1] == "час":
-                        urls.append("https://www.avito.ru" + ad["href"])
-                    elif dates.text.split(" ")[1] == "часа":
-                        urls.append("https://www.avito.ru" + ad["href"])    
-                    elif dates.text.split(" ")[1] == "часов":
-                        urls.append("https://www.avito.ru" + ad["href"])
+            ads_dates = bs.find_all("div", {"data-marker": "item-date"})
+            #ads_body = bs.find_all("div", {"class": "iva-item-body-R_Q9c"})
+            for dates in ads_dates:
+                ads = dates.Parent.Parent.Parent.Parent.Parent
+                        print(ads)
+                    #if dates.text.split(" ")[1] == "секунду":
+                         
+                    #elif dates.text.split(" ")[1] == "секунд":
+                        #urls.append("https://www.avito.ru" + ad["href"])
+                    #elif dates.text.split(" ")[1] == "минуту":
+                        #urls.append("https://www.avito.ru" + ad["href"])
+                    #elif dates.text.split(" ")[1] == "минут":
+                        #urls.append("https://www.avito.ru" + ad["href"])
+                    #elif dates.text.split(" ")[1] == "час":
+                        #urls.append("https://www.avito.ru" + ad["href"])
+                    #elif dates.text.split(" ")[1] == "часа":
+                        #urls.append("https://www.avito.ru" + ad["href"])    
+                    #elif dates.text.split(" ")[1] == "часов":
+                        #urls.append("https://www.avito.ru" + ad["href"])
+                    
                     
             #for ad in ads:
                 #dates = bs.find_all("div", {"data-marker": "item-date"})
