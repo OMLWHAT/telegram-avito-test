@@ -48,6 +48,8 @@ class Bot():
         url = last_button.get("href")
         pages = url.rsplit("=", 1)[-1]
         
+        print(f"Всего: {pages} страниц")
+        
         return int(pages)
         
     def parse(self):
