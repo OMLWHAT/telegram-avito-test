@@ -14,7 +14,6 @@ class Bot():
     
     def get_ads(self, pages):
         for page in range(1, pages + 1):
-            print(page)
             text = self.get_page(page)
             bs = BeautifulSoup(text, "html.parser")
                                
