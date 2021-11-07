@@ -6,13 +6,8 @@ from bs4 import BeautifulSoup
 urls = []
 
 class Bot():
-    def get_ads_page(self, url):
-        request = requests.get(url)
-        
-        return request.text
-    
     def get_page(self, page):
-        url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}"
+        url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}&s=104"
         request = requests.get(url)
         
         return request.text
@@ -26,16 +21,7 @@ class Bot():
             ads = bs.find_all("a", {"itemprop": "url"})
            
             for ad in ads:
-                url = "https://www.avito.ru" + ad["href"]
-                ad_text = self.get_ads_page(url)
-                ad_bs = BeautifulSoup(ad_text, "html.parser")
-                
-                ad_page = ad_bs.find("div", {"class": "title-info-metadata-item-redesign"})
-                
-                print(ad_page)
-                
-                if ad_page.string.split(" ")[0] == "Сегодня":
-                    urls.append(url)
+                urls.append("https://www.avito.ru" + ad["href"])
                         
             return True
         
