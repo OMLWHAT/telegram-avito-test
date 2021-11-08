@@ -29,10 +29,8 @@ class Bot():
         text = self.get_page(1)
         bs = BeautifulSoup(text, "html.parser")
         
-        buttons = bs.select("span", {"class": "pagination-item-JJq_j"})
+        buttons = bs.select("span.pagination-item-JJq_j")
         print(buttons)
-        last_button = buttons[-1]
-        print(last_button)
         #buttons = bs.select("a.pagination-page")
         #last_button = buttons[-1]
         #url = last_button.get("href")
