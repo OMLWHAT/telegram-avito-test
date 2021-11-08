@@ -14,6 +14,7 @@ class Bot():
         return request.text
     
     def get_ads(self, pages):
+        print(pages)
         for page in range(1, pages + 1):
             print(page, "lol")
             text = self.get_page(page)
