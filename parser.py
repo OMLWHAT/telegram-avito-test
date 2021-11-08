@@ -31,7 +31,7 @@ class Bot():
         bs = BeautifulSoup(text, "html.parser")
         
         container = bs.select("a.pagination-page")
-        last_button = buttons[-1]
+        last_button = container[-1]
         print(last_button)
         url = last_button.get("href")
         pages = url.rsplit("=", 1)[-1]
