@@ -8,7 +8,6 @@ urls = []
 class Bot():
     def get_page(self, page):
         url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}&s=104"
-        print(url)
         request = requests.get(url)
         
         return request.text
@@ -30,9 +29,8 @@ class Bot():
         text = self.get_page(1)
         bs = BeautifulSoup(text, "html.parser")
         
-        container = bs.select("a.pagination-page")
-        last_button = container[-1]
-        print(last_button)
+        buttons = bs.select("a.pagination-page")
+        last_button = buttons[-2]
         url = last_button.get("href")
         pages = url.rsplit("=", 1)[-1]
         
