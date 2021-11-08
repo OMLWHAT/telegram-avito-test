@@ -7,6 +7,7 @@ urls = []
 
 class Bot():
     def get_page(self, page):
+        print(page)
         url = f"https://www.avito.ru/tatarstan/tovary_dlya_kompyutera/komplektuyuschie/videokarty-ASgBAgICAkTGB~pm7gmmZw?f=ASgBAgECAkTGB~pm7gmmZwFFxpoMFXsiZnJvbSI6MSwidG8iOjE1MDAwfQ&p={page}&s=104"
         request = requests.get(url)
         
@@ -14,6 +15,7 @@ class Bot():
     
     def get_ads(self, pages):
         for page in range(1, pages + 1):
+            print(page.."lol")
             text = self.get_page(page)
             bs = BeautifulSoup(text, "html.parser")
                                
