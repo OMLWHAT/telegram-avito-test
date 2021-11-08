@@ -30,10 +30,9 @@ class Bot():
         bs = BeautifulSoup(text, "html.parser")
         
         buttons = bs.select("a.pagination-page")
-        last_button = buttons[-2]
-        print(last_button)
+        last_button = buttons[-1]
         url = last_button.get("href")
-        pages = url.rsplit("=", 1)[-1]
+        pages = url.rsplit("=", 1)[-2]
         
         print(f"Всего {pages} страниц")
         
