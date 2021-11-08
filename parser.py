@@ -31,6 +31,7 @@ class Bot():
         
         buttons = bs.select("span.pagination-item-JJq_j")
         last_button = buttons[-2]
+        print(last_button.text)
         #buttons = bs.select("a.pagination-page")
         #last_button = buttons[-1]
         #url = last_button.get("href")
